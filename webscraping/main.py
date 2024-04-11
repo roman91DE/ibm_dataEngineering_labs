@@ -4,21 +4,14 @@ import pandas as pd
 import sqlite3
 import sys
 from os.path import join
-import logging
-
-logger = logging.Logger("webscraping")
-logger.setLevel(logging.DEBUG)
-file_handler = logging.FileHandler(join("webscraping", "webscraping.log"))
-file_handler.setLevel(logging.DEBUG)
-formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-file_handler.setFormatter(formatter)
-logger.addHandler(file_handler)
+from logger.logger import get_logger
 
 url = "https://web.archive.org/web/20230902185655/https://en.everybodywiki.com/100_Most_Highly-Ranked_Films"
 db_name = join("webscraping", "Movies.db")
 table_name = "Top_50"
 csv_path = join("webscraping", "top_50_films.csv")
 
+logger = get_logger("webscraping - top 50 movies", join("webscraping", "log.txt"))
 
 resp = requests.get(url)
 logger.info(f"Sent GET Request to {resp.request.url}, HTTP-Status: {resp.status_code}")
