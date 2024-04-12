@@ -1,0 +1,6 @@
+2024-04-12 19:06:52,763 - webscraping - top 50 movies - INFO - Sent GET Request to https://web.archive.org/web/20230902185655/https://en.everybodywiki.com/100_Most_Highly-Ranked_Films, HTTP-Status: 200
+2024-04-12 19:06:52,808 - webscraping - top 50 movies - INFO - Written CSV File to webscraping/top_50_films.csv
+2024-04-12 19:06:52,811 - webscraping - top 50 movies - INFO - Written Records to Table Top_50 in SQLITE Database webscraping/Movies.db
+2024-04-12 19:31:50,813 - webscraping - top 50 movies - INFO - Sent GET Request to https://web.archive.org/web/20230902185655/https://en.everybodywiki.com/100_Most_Highly-Ranked_Films, HTTP-Status: 200
+2024-04-12 19:31:50,875 - webscraping - top 50 movies - INFO - Written CSV File to webscraping/top_50_films.csv
+2024-04-12 19:31:50,879 - webscraping - top 50 movies - INFO - Written Records to Table Top_50 in SQLITE Database webscraping/Movies.db

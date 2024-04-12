@@ -1,24 +1,44 @@
-import requests
-from bs4 import BeautifulSoup
-import pandas as pd
+import logging
 import sqlite3
 import sys
 from os.path import join
-from logger.logger import get_logger
+
+import pandas as pd
+import requests
+from bs4 import BeautifulSoup
+
+
+def get_logger(name: str, log_path: str) -> logging.Logger:
+    logger = logging.Logger(name)
+    logger.setLevel(logging.DEBUG)
+    file_handler: logging.Handler = logging.FileHandler(log_path)
+    file_handler.setLevel(logging.DEBUG)
+    stream_handler: logging.Handler = logging.StreamHandler()
+    stream_handler.setLevel(logging.DEBUG)
+    formatter = logging.Formatter(
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    )
+    file_handler.setFormatter(formatter)
+    stream_handler.setFormatter(formatter)
+
+    for handler in (file_handler, stream_handler):
+        logger.addHandler(handler)
+
+    return logger
 
 url = "https://web.archive.org/web/20230902185655/https://en.everybodywiki.com/100_Most_Highly-Ranked_Films"
 db_name = join("webscraping", "Movies.db")
 table_name = "Top_50"
 csv_path = join("webscraping", "top_50_films.csv")
 
-logger = get_logger("webscraping - top 50 movies", join("webscraping", "log.txt"))
+getLogger = get_logger("webscraping - top 50 movies", join("webscraping", "log.txt"))
 
 resp = requests.get(url)
-logger.info(f"Sent GET Request to {resp.request.url}, HTTP-Status: {resp.status_code}")
+getLogger.info(f"Sent GET Request to {resp.request.url}, HTTP-Status: {resp.status_code}")
 
 
 if resp.status_code != 200:
-    logger.error("Failed to GET HTML")
+    getLogger.error("Failed to GET HTML")
     sys.exit(-1)
 
 
@@ -27,7 +47,7 @@ soup = BeautifulSoup(resp.text, "html.parser")
 tables = soup.find_all("tbody")
 
 if len(tables) == 0:
-    logger.error("Couldnt extract valid table!")
+    getLogger.error("Couldnt extract valid table!")
     sys.exit(-2)
 
 table = tables[0]
@@ -49,9 +69,9 @@ df = pd.DataFrame(data).set_index("Average Rank")
 
 with open(csv_path, "w") as f:
     df.to_csv(f)
-    logger.info(f"Written CSV File to {csv_path}")
+    getLogger.info(f"Written CSV File to {csv_path}")
 
 
 with sqlite3.connect(db_name) as conn:
     df.to_sql(table_name, conn, if_exists="replace", index=True, index_label="Rank")
-    logger.info(f"Written Records to Table {table_name} in SQLITE Database {db_name}")
+    getLogger.info(f"Written Records to Table {table_name} in SQLITE Database {db_name}")
