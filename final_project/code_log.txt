@@ -1,0 +1,26 @@
+13/04/2024, 15:55:19 : Preliminaries complete. Initiating ETL process
+13/04/2024, 15:55:19 : Data extraction complete. Initiating Transformation process
+13/04/2024, 15:55:20 : Data transformation complete. Initiating Loading process
+13/04/2024, 15:55:20 : Data saved to CSV file
+13/04/2024, 15:55:20 : SQL Connection initiated
+13/04/2024, 15:55:20 : Data loaded to Database as a table, Executing queries
+13/04/2024, 15:55:20 : Process Complete
+13/04/2024, 15:55:20 : Process Complete
+13/04/2024, 15:55:20 : Process Complete
+13/04/2024, 15:55:20 : Server Connection closed
+13/04/2024, 16:02:47 : Preliminaries complete. Initiating ETL process
+13/04/2024, 16:04:13 : Preliminaries complete. Initiating ETL process
+13/04/2024, 16:04:35 : Preliminaries complete. Initiating ETL process
+13/04/2024, 16:05:12 : Preliminaries complete. Initiating ETL process
+13/04/2024, 16:07:38 : Preliminaries complete. Initiating ETL process
+13/04/2024, 16:08:16 : Preliminaries complete. Initiating ETL process
+13/04/2024, 16:11:14 : Preliminaries complete. Initiating ETL process
+13/04/2024, 16:11:14 : Data extraction complete. Initiating Transformation process
+13/04/2024, 16:11:15 : Data transformation complete. Initiating Loading process
+13/04/2024, 16:11:15 : Data saved to CSV file
+13/04/2024, 16:11:15 : SQL Connection initiated
+13/04/2024, 16:11:15 : Data loaded to Database as a table, Executing queries
+13/04/2024, 16:11:15 : Process Complete
+13/04/2024, 16:11:15 : Process Complete
+13/04/2024, 16:11:15 : Process Complete
+13/04/2024, 16:11:15 : Server Connection closed
