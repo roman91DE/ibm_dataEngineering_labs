@@ -25,7 +25,6 @@ echo "destinationDirectory: $destinationDirectory"
 
 # [TASK 3]
 currentTS=$(date +%s)
-backupFileName="backup-$currentTS.tar.gz"
 
 # [TASK 4]
 backupFileName="backup-$currentTS.tar.gz"
@@ -45,25 +44,28 @@ cd "$destinationDirectory"
 destDirAbsPath=$(pwd)
 
 # [TASK 7]
-cd # <-
-cd # <-
+cd "$targetDirectory"
 
 # [TASK 8]
-yesterdayTS=
+yesterdayTS=$((currentTS - 60 * 60 * 24))
 
 declare -a toBackup
 
-for file in $() # [TASK 9]
+for file in "$targetDirectory"/* # [TASK 9]
 do
   # [TASK 10]
-  if (())
+  if (( $(date -r "$file" +%s) > yesterdayTS))
   then
     # [TASK 11]
+    toBackup+=("$file")
   fi
 done
 
 # [TASK 12]
+tar -czf "$backupFileName" "${toBackup[@]}"
+
 
 # [TASK 13]
+mv "$backupFileName" "$destinationDirectory"
 
 # Congratulations! You completed the final project for this course!
