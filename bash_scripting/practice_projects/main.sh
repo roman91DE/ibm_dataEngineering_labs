@@ -9,7 +9,7 @@ LOCATION="casablanca"
 JUST_TXT="?T" # this forces ASCII plaintext as response instead of ANSI
 
 
-PROJECT_DIR="./bash_scripting/final_project"
+PROJECT_DIR="./bash_scripting/fpractice_projects"
 LOG_FILE="$PROJECT_DIR/rx_poc.tsv"
 RAW_RESP_FILE="$PROJECT_DIR/${LOCATION}-raw-$TIMESTAMP.txt"
 
